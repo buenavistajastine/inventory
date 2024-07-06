@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # [shadcn/ui sidebar](https://shadcn-ui-sidebar.salimi.my) &middot; [![Author Salimi](https://img.shields.io/badge/Author-Salimi-%3C%3E)](https://www.salimi.my)
 
 A stunning and functional retractable sidebar for Next.js built on top of [shadcn/ui](https://ui.shadcn.com) complete with desktop and mobile responsiveness.
@@ -63,3 +64,6 @@ Direct demo link: `https://shadcn-ui-sidebar.salimi.my`
 #### Sheet menu
 
 <img src="/screenshots/screenshot-4.png" width="300">
+=======
+# inventory
+>>>>>>> 0335e669e6213c8c2e822c302ed0b36725bf11bd
