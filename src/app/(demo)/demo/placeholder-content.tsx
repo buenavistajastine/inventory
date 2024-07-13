@@ -35,7 +35,7 @@ import {
 
 export default function Component() {
   return (
-<main className="flex flex-1 flex-col gap-4 pb-4 pt-4 md:gap-8 md:pb-8 md:pt-8">
+<main className="flex flex-1 flex-col gap-4 pb-4 pt-4 md:gap-8 md:pb-4 md:pt-4">
         <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
           <Card x-chunk="dashboard-01-chunk-0">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -96,7 +96,9 @@ export default function Component() {
           >
             <CardHeader className="flex flex-row items-center">
               <div className="grid gap-2">
-                <CardTitle>Transactions</CardTitle>
+                <CardTitle><h3 className="text-2xl font-semibold leading-none tracking-tight">
+                  Transactions
+                </h3></CardTitle>
                 <CardDescription>
                   Recent transactions from your store.
                 </CardDescription>
@@ -232,7 +234,9 @@ export default function Component() {
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Recent Sales</CardTitle>
+              <CardTitle><h3 className="text-2xl font-semibold leading-none tracking-tight">
+                  Recent Sales
+                </h3></CardTitle>
             </CardHeader>
             <CardContent className="grid gap-8">
               <div className="flex items-center gap-4">

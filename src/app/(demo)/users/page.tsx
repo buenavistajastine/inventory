@@ -1,7 +1,8 @@
-import Link from "next/link";
+"use client"
 
-import PlaceholderContent from "@/app/(demo)/demo/placeholder-content";
 import { ContentLayout } from "@/components/admin-panel/content-layout";
+import { Users, columns } from "./columns"
+import { DataTable } from "./data-table"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,10 +11,38 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
+import { useEffect, useState } from 'react';
+import { getUsers } from '@/lib/crud';
+import UpdateUserDialog from '@/components/UpdateUserDialog';
+import Link from "next/link";
 
-export default function UsersPage() {
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  username: string;
+  // Define other properties as per your user data structure
+}
+
+export default function UserPage() {
+  const [users, setUsers] = useState<Users[]>([]);
+
+  const fetchUsers = async () => {
+    try {
+      const data = await getUsers();
+      setUsers(data);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+      // Handle error appropriately, e.g., show error message to user
+    }
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
   return (
-    <ContentLayout title="Users">
+    <ContentLayout title="Dashboard">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -23,17 +52,15 @@ export default function UsersPage() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href="/dashboard">Dashboard</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>Users</BreadcrumbPage>
+            <BreadcrumbPage>Dashboard</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <PlaceholderContent />
+
+      <div className="flex flex-1 flex-col gap-4 py-8 md:gap-8 md:py-4">
+        <DataTable columns={columns} data={users} />
+      </div>
     </ContentLayout>
   );
 }
+
